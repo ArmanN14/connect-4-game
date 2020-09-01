@@ -1,10 +1,11 @@
 const btn_grid = document.getElementById("btn_grid").addEventListener("click", gridSelection);
 const grid = document.getElementById("grid");
-const row_select = document.getElementById("row_select").value;
-const column_select = document.getElementById('column_select').value;
+
 
 function gridSelection() {
     //clear the grid if it was populated from a previous game
+    const row_select = document.getElementById("row_select").value;
+    const column_select = document.getElementById("column_select").value;
     grid.innerHTML = " ";
     
     // a function that creates a coonect 4 grid based on the use input 
