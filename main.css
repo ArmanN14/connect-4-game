@@ -1,0 +1,78 @@
+h1 {
+    color: darkcyan ;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+.user_input {
+    display:flex;
+    justify-content: center;
+
+    padding: 5%;
+}
+#row_select {
+    margin-right: 5%;
+}
+#btn_grid {
+    margin-left: 10%;
+}
+
+#grid {
+    margin-bottom: 5%;
+}
+.row {
+ 
+    display: flex;
+    justify-content: center;
+    
+  }
+.column {
+    background-color: blue;
+    width: 4.2rem;
+    height: 4.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.pawn{
+    height: 80%;
+    width:80%;
+    background-color: lightblue;
+    border-radius: 50%;
+    display:flex;
+}
+
+.playerTurn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%
+}
+#player_1 {
+    margin-right: 5%;
+    margin-left: 2%;
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#player_2 {
+    margin-right: 5%;
+    margin-left: 2%;
+    background-color: white;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
