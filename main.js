@@ -22,11 +22,14 @@ function gridSelection() {
     for (let j = 0; j < columnSelect; j++) {
       // create id for each column
       const column = $('<div></div>').addClass('column');
+      const pawn = $('<div></div>').addClass('pawn');
       for (let k = 0; k <= j; k++) {
         column.attr('id', 'column=' + k);
+        for (let l = 0; l <= k; l++) {
+          pawn.attr('id', 'pawn=' + l);
+        }
       }
-      const circle = $('<div></div>').addClass('pawn');
-      column.append(circle);
+      column.append(pawn);
 
       row.append(column);
     }
