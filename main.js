@@ -1,42 +1,34 @@
-const btn_grid = document.getElementById("btn_grid").addEventListener("click", gridSelection);
-const grid = document.getElementById("grid");
-
+/* eslint-disable radix */
+$('#btn_grid').click(gridSelection);
+const grid = $('#grid');
 
 function gridSelection() {
-    //clear the grid if it was populated from a previous game
-    const row_select = document.getElementById("row_select").value;
-    const column_select = document.getElementById("column_select").value;
-    grid.innerHTML = " ";
-    
-    // a function that creates a coonect 4 grid based on the use input 
-    // first creating a row by looping over th enumber of rows entered
-    for(let i=0; i < row_select; i++) {
-        
-        // create an element(div)
-        const row = document.createElement("div"); 
+  grid.html(' ');
+  // clear the grid if it was populated from a previous game
+  const rowSelect = parseInt($('#row_select').val());
+  const columnSelect = parseInt($('#column_select').val());
 
-        //assign row with class "row" and links with css
-        row.className = "row";
-        row.id = "row=" + i;
-        // append the row to the grid, essentially adding the row element is the grid div element
-        grid.appendChild(row);
+  // a function that creates a coonect 4 grid based on the use input
+  // first creating a row by looping over th enumber of rows entered
+  for (let i = 0; i < rowSelect; i++) {
+    // create an element(div)
+    const row = $('<div></div>').addClass('row').attr('id', 'row=' + i);
+    // assign row with class "row" and links with css
+    // append the row to the grid, essentially adding the row element is the grid div element
+    grid.append(row);
 
-        // each row will have columns follow same logic as row but instead of adding it to the
-        // grid it gets added to the row.
-        for(let j=0; j < column_select; j++){
+    // each row will have columns follow same logic as row but instead of adding it to the
+    // grid it gets added to the row.
+    for (let j = 0; j < columnSelect; j++) {
+      // create id for each column
+      const column = $('<div></div>').addClass('column');
+      for (let k = 0; k <= j; k++) {
+        column.attr('id', 'column=' + k);
+      }
+      const circle = $('<div></div>').addClass('pawn');
+      column.append(circle);
 
-            //create id for each column
-            const column = document.createElement("div")
-            for(let k = 0; k <=j; k++){
-                column.id = "column="+k;
-            }
-            column.className = "column";
-                const circle = document.createElement("div")
-                    circle.className = "pawn";
-                    column.appendChild(circle);
-
-            row.appendChild(column);
-        }
+      row.append(column);
     }
+  }
 }
-
