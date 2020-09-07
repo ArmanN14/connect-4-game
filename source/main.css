@@ -76,3 +76,9 @@ h3 {
     align-items: center;
 }
 
+.red {
+    background-color: red ;
+}
+.yellow {
+    background-color: yellow;
+}

@@ -13,7 +13,6 @@ module.exports = {
   },
   rules: {
     'no-plusplus': 'off',
-    'prefer-template': 'off',
     'no-use-before-define': 'off',
   },
 };
