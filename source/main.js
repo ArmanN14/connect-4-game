@@ -1,4 +1,5 @@
 $('#btn_grid').click(gridSelection);
+$('#btn_new_game').click(resetGame);
 const grid = $('#grid');
 let board;
 let currentPlayer = 'red';
@@ -38,12 +39,12 @@ function gridSelection() {
         const rowPawn = takeTurn(col);
         drawPawn(rowPawn, col);
         togglePlayerIndicator();
+        checkWinnerColumn(col);
       });
 
       column.append(pawn);
       row.append(column);
     }
-    // $('#column-' + j).click(() => drawPawn(j));
   }
 }
 
@@ -62,7 +63,7 @@ function takeTurn(column) {
       return row;
     }
   }
-  //todo full collumn
+  return console.log('full');
 }
 function togglePlayerIndicator() {
   if (currentPlayer === 'red') {
@@ -74,6 +75,29 @@ function togglePlayerIndicator() {
     $('#player_2').css('background-color', 'white');
     $('#player_1').css('background-color', 'red');
   }
+}
+
+function checkWinnerColumn(currentColumn) {
+  let redWin = 0;
+  let yellowWin = 0;
+  for (let i = board[currentColumn].length; i > 0; i--) {
+    if (board[currentColumn][i] === 'red' && board[currentColumn][i - 1] === 'red') {
+      redWin += 1;
+    }
+    if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
+      yellowWin += 1;
+    }
+  }
+  if (redWin === 3) {
+    $('#banner').text('RED WIN').css('background-color', 'red');
+  }
+  if (yellowWin === 3) {
+    $('#banner').text('YELLOW WIN').css('background-color', 'yellow');
+  }
+}
+function resetGame() {
+  gridSelection();
+  $('#banner').text('Keep playing...').css('background-color', 'white');
 }
 if (typeof module !== 'undefined') {
   module.exports = {
