@@ -96,7 +96,7 @@ function checkWinnerColumn(currentColumn) {
 function checkWinnerRow(currentRow) {
   let redWin = 0;
   let yellowWin = 0;
-  for (let i = 0; i < board.length; i++) {
+  for (let i = 0; i < board[i].length; i++) {
     if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
       redWin += 1;
     }
