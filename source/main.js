@@ -119,6 +119,8 @@ function yellowBanner(yellow) {
 }
 function resetGame() {
   gridSelection();
+  currentPlayer = 'yellow';
+  togglePlayerIndicator();
   $('#banner').text('Keep playing...').css('background-color', 'white');
 }
 if (typeof module !== 'undefined') {
