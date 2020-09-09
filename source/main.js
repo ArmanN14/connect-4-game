@@ -40,6 +40,7 @@ function gridSelection() {
         drawPawn(rowPawn, col);
         togglePlayerIndicator();
         checkWinnerColumn(col);
+        checkWinnerRow(rowPawn);
       });
 
       column.append(pawn);
@@ -88,10 +89,31 @@ function checkWinnerColumn(currentColumn) {
       yellowWin += 1;
     }
   }
-  if (redWin === 3) {
+  redBanner(redWin);
+  yellowBanner(yellowWin);
+}
+
+function checkWinnerRow(currentRow) {
+  let redWin = 0;
+  let yellowWin = 0;
+  for (let i = 0; i < board.length; i++) {
+    if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
+      redWin += 1;
+    }
+    if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
+      yellowWin += 1;
+    }
+  }
+  redBanner(redWin);
+  yellowBanner(yellowWin);
+}
+function redBanner(red) {
+  if (red === 3) {
     $('#banner').text('RED WIN').css('background-color', 'red');
   }
-  if (yellowWin === 3) {
+}
+function yellowBanner(yellow) {
+  if (yellow === 3) {
     $('#banner').text('YELLOW WIN').css('background-color', 'yellow');
   }
 }
