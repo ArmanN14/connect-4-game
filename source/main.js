@@ -1,4 +1,5 @@
 $('#btn_grid').click(gridSelection);
+$('#btn_new_game').click(resetGame);
 const grid = $('#grid');
 let board;
 let currentPlayer = 'red';
@@ -38,12 +39,13 @@ function gridSelection() {
         const rowPawn = takeTurn(col);
         drawPawn(rowPawn, col);
         togglePlayerIndicator();
+        checkWinnerColumn(col);
+        checkWinnerRow(rowPawn);
       });
 
       column.append(pawn);
       row.append(column);
     }
-    // $('#column-' + j).click(() => drawPawn(j));
   }
 }
 
@@ -62,7 +64,7 @@ function takeTurn(column) {
       return row;
     }
   }
-  //todo full collumn
+  return console.log('full');
 }
 function togglePlayerIndicator() {
   if (currentPlayer === 'red') {
@@ -74,6 +76,52 @@ function togglePlayerIndicator() {
     $('#player_2').css('background-color', 'white');
     $('#player_1').css('background-color', 'red');
   }
+}
+
+function checkWinnerColumn(currentColumn) {
+  let redWin = 0;
+  let yellowWin = 0;
+  for (let i = board[currentColumn].length; i > 0; i--) {
+    if (board[currentColumn][i] === 'red' && board[currentColumn][i - 1] === 'red') {
+      redWin += 1;
+    }
+    if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
+      yellowWin += 1;
+    }
+  }
+  redBanner(redWin);
+  yellowBanner(yellowWin);
+}
+
+function checkWinnerRow(currentRow) {
+  let redWin = 0;
+  let yellowWin = 0;
+  for (let i = 0; i < board[i].length; i++) {
+    if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
+      redWin += 1;
+    }
+    if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
+      yellowWin += 1;
+    }
+  }
+  redBanner(redWin);
+  yellowBanner(yellowWin);
+}
+function redBanner(red) {
+  if (red === 3) {
+    $('#banner').text('RED WIN').css('background-color', 'red');
+  }
+}
+function yellowBanner(yellow) {
+  if (yellow === 3) {
+    $('#banner').text('YELLOW WIN').css('background-color', 'yellow');
+  }
+}
+function resetGame() {
+  gridSelection();
+  currentPlayer = 'yellow';
+  togglePlayerIndicator();
+  $('#banner').text('Keep playing...').css('background-color', 'white');
 }
 if (typeof module !== 'undefined') {
   module.exports = {
