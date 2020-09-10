@@ -57,6 +57,7 @@ function drawPawn(rowNumber, columnNumber) {
   $(`#column-${columnNumber} #pawn-${rowNumber}`).css('background-color', currentPlayer);
 }
 
+// move to backend without any change
 function takeTurn(column) {
   for (let row = board[column].length - 1; row >= 0; row--) {
     if (board[column][row] === null) {
@@ -66,6 +67,7 @@ function takeTurn(column) {
   }
   return console.log('full');
 }
+// seperate logic from frontent before moving to backend
 function togglePlayerIndicator() {
   if (currentPlayer === 'red') {
     currentPlayer = 'yellow';
@@ -77,7 +79,7 @@ function togglePlayerIndicator() {
     $('#player_1').css('background-color', 'red');
   }
 }
-
+// move to backend as it is however change to return when red or yellow wins for the frontend
 function checkWinnerColumn(currentColumn) {
   let redWin = 0;
   let yellowWin = 0;
@@ -92,7 +94,7 @@ function checkWinnerColumn(currentColumn) {
   redBanner(redWin);
   yellowBanner(yellowWin);
 }
-
+// move to backend as it is however change to return when red or yellow wins for the frontend
 function checkWinnerRow(currentRow) {
   let redWin = 0;
   let yellowWin = 0;
