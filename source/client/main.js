@@ -10,8 +10,20 @@ function gridSelection() {
   const rowSelect = Number.parseInt($('#row_select').val(), 10) || 6;
 
   const columnSelect = Number.parseInt($('#column_select').val(), 10) || 7;
-
-  createBoard(rowSelect, columnSelect);
+  const body = {
+    row: rowSelect,
+    column: columnSelect,
+  };
+  $.ajax({
+    type: 'POST',
+    url: '/game',
+    data: JSON.stringify(body),
+    contentType: 'application/json',
+    success: (result) => {
+      console.log(result);
+    },
+  });
+  // createBoard(rowSelect, columnSelect);
   // a function that creates a coonect 4 grid based on the use input
   // first creating a row by looping over th enumber of rows entered
 
@@ -36,11 +48,21 @@ function gridSelection() {
 
       column.click((event) => {
         const col = event.currentTarget.id.split('-')[1];
-        const rowPawn = takeTurn(col);
-        drawPawn(rowPawn, col);
-        togglePlayerIndicator();
-        checkWinnerColumn(col);
-        checkWinnerRow(rowPawn);
+        const clickEvent = {
+          column: col,
+        };
+        $.ajax({
+          type: 'POST',
+          url: '/game/takeTurn',
+          data: JSON.stringify(clickEvent),
+          contentType: 'application/json',
+          success: (result) => {
+            drawPawn(result.row, col);
+          },
+        });
+        // togglePlayerIndicator();
+        // checkWinnerColumn(col);
+        // checkWinnerRow(rowPawn);
       });
 
       column.append(pawn);
@@ -49,24 +71,10 @@ function gridSelection() {
   }
 }
 
-function createBoard(rows, columns) {
-  board = [...Array(columns).keys()].map(i => Array(rows).fill(null));
-}
-
 function drawPawn(rowNumber, columnNumber) {
   $(`#column-${columnNumber} #pawn-${rowNumber}`).css('background-color', currentPlayer);
 }
 
-// move to backend without any change
-function takeTurn(column) {
-  for (let row = board[column].length - 1; row >= 0; row--) {
-    if (board[column][row] === null) {
-      board[column][row] = currentPlayer;
-      return row;
-    }
-  }
-  return console.log('full');
-}
 // seperate logic from frontent before moving to backend
 function togglePlayerIndicator() {
   if (currentPlayer === 'red') {
@@ -109,16 +117,19 @@ function checkWinnerRow(currentRow) {
   redBanner(redWin);
   yellowBanner(yellowWin);
 }
+// move logic to server
 function redBanner(red) {
   if (red === 3) {
     $('#banner').text('RED WIN').css('background-color', 'red');
   }
 }
+// move logic to server
 function yellowBanner(yellow) {
   if (yellow === 3) {
     $('#banner').text('YELLOW WIN').css('background-color', 'yellow');
   }
 }
+// move the fucntions to server and keep the css here
 function resetGame() {
   gridSelection();
   currentPlayer = 'yellow';
@@ -127,8 +138,7 @@ function resetGame() {
 }
 if (typeof module !== 'undefined') {
   module.exports = {
-    createBoard,
     gridSelection,
     takeTurn,
-  }
+  };
 }
