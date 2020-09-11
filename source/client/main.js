@@ -1,7 +1,7 @@
 $('#btn_grid').click(gridSelection);
 $('#btn_new_game').click(resetGame);
 const grid = $('#grid');
-let board;
+
 let currentPlayer = 'red';
 function gridSelection() {
   grid.html('');
@@ -22,7 +22,6 @@ function gridSelection() {
       console.log(result);
     },
   });
-  // createBoard(rowSelect, columnSelect);
   // a function that creates a coonect 4 grid based on the use input
   // first creating a row by looping over th enumber of rows entered
 
@@ -63,8 +62,6 @@ function gridSelection() {
             winBanner(result.result.roWin, result.result.colWin);
           },
         });
-        // checkWinnerColumn(col);
-        // checkWinnerRow(rowPawn);
       });
 
       column.append(pawn);
@@ -77,7 +74,6 @@ function drawPawn(rowNumber, columnNumber) {
   $(`#column-${columnNumber} #pawn-${rowNumber}`).css('background-color', currentPlayer);
 }
 
-// seperate logic from frontent before moving to backend
 function togglePlayerIndicator() {
   if (currentPlayer === 'red') {
     currentPlayer = 'yellow';
@@ -99,39 +95,6 @@ function winBanner(rWin, colWin) {
     }
   }
 }
-// // move to backend as it is however change to return when red or yellow wins for the frontend
-// function checkWinnerColumn(currentColumn) {
-//   let redWin = 0;
-//   let yellowWin = 0;
-//   for (let i = board[currentColumn].length; i > 0; i--) {
-//     if (board[currentColumn][i] === 'red' && board[currentColumn][i - 1] === 'red') {
-//       redWin += 1;
-//     }
-//     if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
-//       yellowWin += 1;
-//     }
-//   }
-//   redBanner(redWin);
-//   yellowBanner(yellowWin);
-// }
-// // move to backend as it is however change to return when red or yellow wins for the frontend
-// function checkWinnerRow(currentRow) {
-//   let redWin = 0;
-//   let yellowWin = 0;
-//   for (let i = 0; i < board[i].length; i++) {
-//     if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
-//       redWin += 1;
-//     }
-//     if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
-//       yellowWin += 1;
-//     }
-//   }
-//   redBanner(redWin);
-//   yellowBanner(yellowWin);
-// }
-
-
-// move the fucntions to server and keep the css here
 function resetGame() {
   gridSelection();
   currentPlayer = 'yellow';

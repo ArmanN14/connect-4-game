@@ -5,7 +5,6 @@ function createBoard(rows, columns) {
   return console.log(board);
 }
 
-// move to backend without any change
 function takeTurn(column, currentPlayer) {
   for (let row = board[column].length - 1; row >= 0; row--) {
     if (board[column][row] === null) {
@@ -24,7 +23,6 @@ function takeTurn(column, currentPlayer) {
   return 'full';
 }
 
-// move to backend as it is however change to return when red or yellow wins for the frontend
 function checkWinnerColumn(currentColumn) {
   let redWin = 0;
   let yellowWin = 0;
@@ -44,7 +42,7 @@ function checkWinnerColumn(currentColumn) {
   }
   return null;
 }
-// move to backend as it is however change to return when red or yellow wins for the frontend
+
 function checkWinnerRow(currentRow) {
   let redWin = 0;
   let yellowWin = 0;
