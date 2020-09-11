@@ -1,5 +1,4 @@
 let board;
-let currentPlayer = 'red';
 
 function createBoard(rows, columns) {
   board = [...Array(columns).keys()].map(i => Array(rows).fill(null));
@@ -7,14 +6,22 @@ function createBoard(rows, columns) {
 }
 
 // move to backend without any change
-function takeTurn(column) {
+function takeTurn(column, currentPlayer) {
   for (let row = board[column].length - 1; row >= 0; row--) {
     if (board[column][row] === null) {
       board[column][row] = currentPlayer;
-      return row;
+      console.log(board);
+      const rowWin = checkWinnerRow(row);
+      const columnWin = checkWinnerColumn(column);
+      const result = {
+        currentRow: row,
+        roWin: rowWin,
+        colWin: columnWin,
+      };
+      return result;
     }
   }
-  return console.log('full');
+  return 'full';
 }
 
 // move to backend as it is however change to return when red or yellow wins for the frontend
@@ -28,7 +35,14 @@ function checkWinnerColumn(currentColumn) {
     if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
       yellowWin += 1;
     }
+    if (redWin === 3) {
+      return 'red';
+    }
+    if (yellowWin === 3) {
+      return 'yellow';
+    }
   }
+  return null;
 }
 // move to backend as it is however change to return when red or yellow wins for the frontend
 function checkWinnerRow(currentRow) {
@@ -41,7 +55,14 @@ function checkWinnerRow(currentRow) {
     if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
       yellowWin += 1;
     }
+    if (redWin === 3) {
+      return 'red';
+    }
+    if (yellowWin === 3) {
+      return 'yellow';
+    }
   }
+  return null;
 }
 
 if (typeof module !== 'undefined') {

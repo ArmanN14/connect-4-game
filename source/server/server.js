@@ -2,8 +2,6 @@ const express = require('express');
 const {
   createBoard,
   takeTurn,
-  checkWinnerRow,
-  checkWinnerColumn
 } = require('./logic.js');
 const app = express();
 
@@ -19,9 +17,11 @@ app.post('/game', (req, res) => {
 
 app.post('/game/takeTurn', (req, res) => {
   const col = req.body.column;
+  const colour = req.body.turnColour;
   const turnResult = {
-    row: takeTurn(col),
+    result: takeTurn(col, colour),
   };
+
   res.json(turnResult);
 });
 app.listen(8080, () => {

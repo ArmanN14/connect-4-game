@@ -3,7 +3,6 @@ $('#btn_new_game').click(resetGame);
 const grid = $('#grid');
 let board;
 let currentPlayer = 'red';
-
 function gridSelection() {
   grid.html('');
   // clear the grid if it was populated from a previous game
@@ -46,10 +45,12 @@ function gridSelection() {
         pawn.attr('id', `pawn-${k}`);
       }
 
+      // eslint-disable-next-line no-loop-func
       column.click((event) => {
         const col = event.currentTarget.id.split('-')[1];
         const clickEvent = {
           column: col,
+          turnColour: currentPlayer,
         };
         $.ajax({
           type: 'POST',
@@ -57,10 +58,11 @@ function gridSelection() {
           data: JSON.stringify(clickEvent),
           contentType: 'application/json',
           success: (result) => {
-            drawPawn(result.row, col);
+            drawPawn(result.result.currentRow, col);
+            togglePlayerIndicator();
+            winBanner(result.result.roWin, result.result.colWin);
           },
         });
-        // togglePlayerIndicator();
         // checkWinnerColumn(col);
         // checkWinnerRow(rowPawn);
       });
@@ -87,58 +89,52 @@ function togglePlayerIndicator() {
     $('#player_1').css('background-color', 'red');
   }
 }
-// move to backend as it is however change to return when red or yellow wins for the frontend
-function checkWinnerColumn(currentColumn) {
-  let redWin = 0;
-  let yellowWin = 0;
-  for (let i = board[currentColumn].length; i > 0; i--) {
-    if (board[currentColumn][i] === 'red' && board[currentColumn][i - 1] === 'red') {
-      redWin += 1;
+function winBanner(rWin, colWin) {
+  if (rWin !== null || colWin !== null) {
+    if (rWin === 'red' || colWin === 'red') {
+      $('#banner').text('RED WIN').css('background-color', 'red');
     }
-    if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
-      yellowWin += 1;
+    if (rWin === 'yellow' || colWin === 'yellow') {
+      $('#banner').text('YELLOW WIN').css('background-color', 'yellow');
     }
   }
-  redBanner(redWin);
-  yellowBanner(yellowWin);
 }
-// move to backend as it is however change to return when red or yellow wins for the frontend
-function checkWinnerRow(currentRow) {
-  let redWin = 0;
-  let yellowWin = 0;
-  for (let i = 0; i < board[i].length; i++) {
-    if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
-      redWin += 1;
-    }
-    if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
-      yellowWin += 1;
-    }
-  }
-  redBanner(redWin);
-  yellowBanner(yellowWin);
-}
-// move logic to server
-function redBanner(red) {
-  if (red === 3) {
-    $('#banner').text('RED WIN').css('background-color', 'red');
-  }
-}
-// move logic to server
-function yellowBanner(yellow) {
-  if (yellow === 3) {
-    $('#banner').text('YELLOW WIN').css('background-color', 'yellow');
-  }
-}
+// // move to backend as it is however change to return when red or yellow wins for the frontend
+// function checkWinnerColumn(currentColumn) {
+//   let redWin = 0;
+//   let yellowWin = 0;
+//   for (let i = board[currentColumn].length; i > 0; i--) {
+//     if (board[currentColumn][i] === 'red' && board[currentColumn][i - 1] === 'red') {
+//       redWin += 1;
+//     }
+//     if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
+//       yellowWin += 1;
+//     }
+//   }
+//   redBanner(redWin);
+//   yellowBanner(yellowWin);
+// }
+// // move to backend as it is however change to return when red or yellow wins for the frontend
+// function checkWinnerRow(currentRow) {
+//   let redWin = 0;
+//   let yellowWin = 0;
+//   for (let i = 0; i < board[i].length; i++) {
+//     if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
+//       redWin += 1;
+//     }
+//     if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
+//       yellowWin += 1;
+//     }
+//   }
+//   redBanner(redWin);
+//   yellowBanner(yellowWin);
+// }
+
+
 // move the fucntions to server and keep the css here
 function resetGame() {
   gridSelection();
   currentPlayer = 'yellow';
   togglePlayerIndicator();
   $('#banner').text('Keep playing...').css('background-color', 'white');
-}
-if (typeof module !== 'undefined') {
-  module.exports = {
-    gridSelection,
-    takeTurn,
-  };
 }
