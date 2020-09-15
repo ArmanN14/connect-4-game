@@ -1,6 +1,7 @@
 $('#btn_grid').click(gridSelection);
 $('#btn_new_game').click(resetGame);
 const grid = $('#grid');
+let winner = false;
 
 let currentPlayer = 'red';
 function gridSelection() {
@@ -43,7 +44,6 @@ function gridSelection() {
       for (let k = 0; k <= i; k++) {
         pawn.attr('id', `pawn-${k}`);
       }
-
       // eslint-disable-next-line no-loop-func
       column.click((event) => {
         const col = event.currentTarget.id.split('-')[1];

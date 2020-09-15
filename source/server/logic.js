@@ -2,7 +2,7 @@ let board;
 
 function createBoard(rows, columns) {
   board = [...Array(columns).keys()].map(i => Array(rows).fill(null));
-  return console.log(board);
+  return board;
 }
 
 function takeTurn(column, currentPlayer) {
@@ -29,9 +29,13 @@ function checkWinnerColumn(currentColumn) {
   for (let i = board[currentColumn].length; i > 0; i--) {
     if (board[currentColumn][i] === 'red' && board[currentColumn][i - 1] === 'red') {
       redWin += 1;
+    } else {
+      redWin = 0;
     }
     if (board[currentColumn][i] === 'yellow' && board[currentColumn][i - 1] === 'yellow') {
       yellowWin += 1;
+    } else {
+      yellowWin = 0;
     }
     if (redWin === 3) {
       return 'red';
@@ -49,9 +53,13 @@ function checkWinnerRow(currentRow) {
   for (let i = 0; i < board[i].length; i++) {
     if (board[i][currentRow] === 'red' && board[i + 1][currentRow] === 'red') {
       redWin += 1;
+    } else {
+      redWin = 0;
     }
     if (board[i][currentRow] === 'yellow' && board[i + 1][currentRow] === 'yellow') {
       yellowWin += 1;
+    } else {
+      yellowWin = 0;
     }
     if (redWin === 3) {
       return 'red';
