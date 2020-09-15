@@ -19,21 +19,26 @@ describe('boardCreation', () => {
   const secondRow = 8;
   const secondColumn = 10;
   const secondExpectedOutput = [
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-    [null, null, null, null, null, null, null, null, null],
-  ]
-  each([[rows, columns,
-    expectedOutput], [secondRow, secondColumn, secondExpectedOutput]]).it('create a 2d array of initial board state', (row, column, expected) => {
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+    [null, null, null, null, null, null, null, null],
+  ];
+
+  each([[rows, columns, expectedOutput], [secondRow, secondColumn, secondExpectedOutput]]).it('create a 2d array of initial board state', (row, column, expected) => {
     // Act
-    const actualOutput = createBoard(row, column);
+    let actualOutput = createBoard(row, column);
     // Assert
     expect(actualOutput).toStrictEqual(expected);
   });
 });
+
+describe('take turn', () => {
+    
+})
