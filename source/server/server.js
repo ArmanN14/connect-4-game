@@ -12,7 +12,7 @@ app.use(express.static('./source/client'));
 app.use(express.json());
 
 app.post('/game', (req, res) => {
-  console.log(createBoard(req.body.row, req.body.column));
+  createBoard(req.body.row, req.body.column);
 });
 
 app.post('/game/takeTurn', (req, res) => {
