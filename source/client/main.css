@@ -76,3 +76,16 @@ h3 {
     align-items: center;
 }
 
+@keyframes highlightWinner {
+    from {border: 5px solid rgb(0, 0, 200);}
+    to {border: 10px solid whitesmoke;}
+  }
+  .board-square {
+    background-color: white;
+    border: 5px solid rgb(0, 0, 200);
+    border-radius: 50%;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
