@@ -12,7 +12,7 @@ describe('POST /game', () => {
     [null, null, null, null, null, null],
     [null, null, null, null, null, null],
   ];
-  it('should return a 2d array of the baord', (done) => {
+  it('should return a 2d array of the board', (done) => {
     request(app)
       .post('/game')
       .send({
