@@ -12,20 +12,33 @@ app.use(express.static('./source/client'));
 app.use(express.json());
 
 app.post('/game', (req, res) => {
-  console.log(createBoard(req.body.row, req.body.column));
+  try {
+    const board = createBoard(req.body.row, req.body.column);
+    res.status(200);
+    res.send(board);
+  } catch (error) {
+    res.send(error);
+  }
 });
 
 app.post('/game/takeTurn', (req, res) => {
-  const col = req.body.column;
-  const colour = req.body.turnColour;
-  const turnResult = {
-    result: takeTurn(col, colour),
-  };
-
-  res.json(turnResult);
+  try {
+    const col = req.body.column;
+    const colour = req.body.turnColour;
+    const turnResult = {
+      result: takeTurn(col, colour),
+    };
+    res.json(turnResult);
+    res.status(200);
+  } catch (error) {
+    res.send(error);
+  }
 });
-app.listen(8080, () => {
-  console.log('Server started at port: 8080');
-});
 
-// when using post rememer to include content-type: 'application/json'
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(8080, () => {
+    console.log('server started on port 8080');
+  });
+}
+
+module.exports = app;
