@@ -1,18 +1,35 @@
+const fs = require('fs').promises;
+
 let state = {
   board: [],
 };
+
 function createBoard(rows, columns) {
   state.board = [...Array(columns).keys()].map(i => Array(rows).fill(null));
   return state.board;
 }
+// does it empty the state after the first run therefore the board is empty again
+async function writeGameState() {
+  try {
+    const boardState = state.board;
+    const lPS = state.lastPlayerServer;
+    const body = {
+      boardState,
+      lPS,
+    };
+    await fs.writeFile('./source/server/gameData.json', JSON.stringify(body), 'utf-8');
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-function takeTurn(column, currentPlayer) {
+async function takeTurn(column, currentPlayer) {
   for (let row = state.board[column].length - 1; row >= 0; row--) {
     if (state.board[column][row] === null) {
       state.board[column][row] = currentPlayer;
-      console.log(state.board);
       const rowWin = checkWinnerRow(row);
       const columnWin = checkWinnerColumn(column);
+      await writeGameState();
       const result = {
         currentRow: row,
         roWin: rowWin,
@@ -79,5 +96,6 @@ if (typeof module !== 'undefined') {
     checkWinnerColumn,
     checkWinnerRow,
     state,
+    writeGameState,
   };
 }

@@ -1,30 +1,17 @@
 $('#btn_grid').click(gridSelection);
 $('#btn_new_game').click(resetGame);
 const grid = $('#grid');
-let winner = false;
 let currentPlayer = 'red';
+
 function gridSelection() {
   grid.html('');
   // clear the grid if it was populated from a previous game
   const rowSelect = Number.parseInt($('#row_select').val(), 10) || 6;
 
   const columnSelect = Number.parseInt($('#column_select').val(), 10) || 7;
-  const body = {
-    row: rowSelect,
-    column: columnSelect,
-  };
-  $.ajax({
-    type: 'POST',
-    url: '/game',
-    data: JSON.stringify(body),
-    contentType: 'application/json',
-    success: (result) => {
-      console.log(result);
-    },
-  });
+  sendBoard(rowSelect, columnSelect);
   // a function that creates a coonect 4 grid based on the use input
-  // first creating a row by looping over th enumber of rows entered
-
+  // first creating a row by looping over the number of rows entered
   for (let i = 0; i < rowSelect; i++) {
     // create an element(div)
     const row = $('<div></div>').addClass('row').attr('id', `row-${i}`);
@@ -57,7 +44,7 @@ function gridSelection() {
           contentType: 'application/json',
           success: (result) => {
             drawPawn(result.result.currentRow, col);
-            togglePlayerIndicator(result);
+            togglePlayerIndicator(result.result);
             winBanner(result.result.roWin, result.result.colWin);
           },
         });
@@ -69,6 +56,21 @@ function gridSelection() {
   }
 }
 
+function sendBoard(rowSelect, columnSelect) {
+  const body = {
+    row: rowSelect,
+    column: columnSelect,
+  };
+  $.ajax({
+    type: 'POST',
+    url: '/game',
+    data: JSON.stringify(body),
+    contentType: 'application/json',
+    success: (result) => {
+      console.log(result);
+    },
+  });
+}
 function drawPawn(rowNumber, columnNumber) {
   $(`#column-${columnNumber} #pawn-${rowNumber}`).css('background-color', currentPlayer);
 }
@@ -85,7 +87,7 @@ function togglePlayerIndicator(full) {
       $('#player_1').css('background-color', 'red');
     }
   } else {
-    window.alert('Pick another column');
+    window.alert('Pick another column 😡');
   }
 }
 function winBanner(rWin, colWin) {
@@ -103,4 +105,15 @@ function resetGame() {
   currentPlayer = 'yellow';
   togglePlayerIndicator();
   $('#banner').text('Keep playing...').css('background-color', 'white');
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = {
+    gridSelection,
+    drawPawn,
+    togglePlayerIndicator,
+    winBanner,
+    resetGame,
+    sendBoard,
+  };
 }
