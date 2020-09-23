@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.3% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>42/46</span>
+                <span class='fraction'>46/46</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.57% </span>
+                <span class="strong">96.43% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>22/28</span>
+                <span class='fraction'>27/28</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90.48% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>38/42</span>
+                <span class='fraction'>42/42</span>
             </div>
         
             
@@ -167,48 +167,48 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">21x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">23x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">22x</span>
+<span class="cline-any cline-yes">26x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">19x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">21x</span>
+<span class="cline-any cline-yes">24x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">20x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">23x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
@@ -258,16 +258,16 @@ function checkWinnerColumn(currentColumn) {
     } else {
       redWin = 0;
     }
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (state.board[currentColumn][i] === 'yellow' &amp;&amp; state.board[currentColumn][i - 1] === 'yellow') {
-<span class="cstat-no" title="statement not covered" >      yellowWin += 1;</span>
+    if (state.board[currentColumn][i] === 'yellow' &amp;&amp; state.board[currentColumn][i - 1] === 'yellow') {
+      yellowWin += 1;
     } else {
       yellowWin = 0;
     }
     if (redWin === 3) {
       return 'red';
     }
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (yellowWin === 3) {
-<span class="cstat-no" title="statement not covered" >      return 'yellow';</span>
+    if (yellowWin === 3) {
+      return 'yellow';
     }
   }
   return null;
@@ -282,16 +282,16 @@ function checkWinnerRow(currentRow) {
     } else {
       redWin = 0;
     }
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (state.board[i][currentRow] === 'yellow' &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >state.board[i + 1][currentRow] === 'yellow')</span> {
-<span class="cstat-no" title="statement not covered" >      yellowWin += 1;</span>
+    if (state.board[i][currentRow] === 'yellow' &amp;&amp; state.board[i + 1][currentRow] === 'yellow') {
+      yellowWin += 1;
     } else {
       yellowWin = 0;
     }
     if (redWin === 3) {
       return 'red';
     }
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (yellowWin === 3) {
-<span class="cstat-no" title="statement not covered" >      return 'yellow';</span>
+    if (yellowWin === 3) {
+      return 'yellow';
     }
   }
   return null;
@@ -313,7 +313,7 @@ function checkWinnerRow(currentRow) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Sep 18 2020 13:41:35 GMT+0100 (British Summer Time)
+                at Mon Sep 21 2020 10:38:56 GMT+0100 (British Summer Time)
             </div>
         </div>
         <script src="prettify.js"></script>

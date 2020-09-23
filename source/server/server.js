@@ -2,6 +2,8 @@ const express = require('express');
 const {
   createBoard,
   takeTurn,
+  writeGameState,
+  state,
 } = require('./logic.js');
 const app = express();
 
@@ -21,12 +23,12 @@ app.post('/game', (req, res) => {
   }
 });
 
-app.post('/game/takeTurn', (req, res) => {
+app.post('/game/takeTurn', async (req, res) => {
   try {
     const col = req.body.column;
     const colour = req.body.turnColour;
     const turnResult = {
-      result: takeTurn(col, colour),
+      result: await takeTurn(col, colour),
     };
     res.json(turnResult);
     res.status(200);

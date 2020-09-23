@@ -80,7 +80,7 @@ test('takeTurn returns full when the column is full', () => {
   expect(turnOutput).toEqual(output);
 });
 
-test('checkWinnerColumn returns red or yellow when win condition is met in a column', () => {
+test('checkWinnerColumn returns red when win condition is met in a column', () => {
   state.board = [
     [null, null, 'red', 'red', 'red', 'red'],
     [null, null, null, 'yellow', 'yellow', 'yellow'],
@@ -92,6 +92,22 @@ test('checkWinnerColumn returns red or yellow when win condition is met in a col
   ];
   const column = 0;
   const output = 'red';
+  const turnOutput = checkWinnerColumn(column);
+  expect(turnOutput).toEqual(output);
+});
+
+test('checkWinnerColumn returns yellow when win condition is met in a column', () => {
+  state.board = [
+    [null, null, 'yellow', 'yellow', 'yellow', 'yellow'],
+    [null, null, null, 'red', 'red', 'red'],
+    [null, null, null, null, null, 'red'],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+  ];
+  const column = 0;
+  const output = 'yellow';
   const turnOutput = checkWinnerColumn(column);
   expect(turnOutput).toEqual(output);
 });
@@ -112,7 +128,7 @@ test('checkWinnerColumn returns null when no win condition is met in a column', 
   expect(turnOutput).toEqual(output);
 });
 
-test('checkWinnerRow returns red or yellow when win condition is met in a row', () => {
+test('checkWinnerRow returns red when win condition is met in a row', () => {
   state.board = [
     [null, null, null, 'yellow', 'red', 'red'],
     [null, null, null, 'yellow', 'yellow', 'red'],
@@ -124,6 +140,22 @@ test('checkWinnerRow returns red or yellow when win condition is met in a row', 
   ];
   const currentRow = 5;
   const output = 'red';
+  const turnOutput = checkWinnerRow(currentRow);
+  expect(turnOutput).toEqual(output);
+});
+
+test('checkWinnerRow returns yellow when win condition is met in a row', () => {
+  state.board = [
+    [null, null, null, 'red', 'red', 'yellow'],
+    [null, null, null, 'red', 'red', 'yellow'],
+    [null, null, null, null, null, 'yellow'],
+    [null, null, null, null, null, 'yellow'],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+    [null, null, null, null, null, null],
+  ];
+  const currentRow = 5;
+  const output = 'yellow';
   const turnOutput = checkWinnerRow(currentRow);
   expect(turnOutput).toEqual(output);
 });
