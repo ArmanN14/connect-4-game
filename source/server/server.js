@@ -2,7 +2,6 @@ const express = require('express');
 const {
   createBoard,
   takeTurn,
-  state,
 } = require('./logic.js');
 
 const app = express();
@@ -35,6 +34,16 @@ app.post('/game/takeTurn', (req, res) => {
   } catch (error) {
     console.error(error);
     res.send(error);
+  }
+});
+
+app.post('game/score', (req, res) => {
+  try {
+    const red = req.body.redCount;
+    const yellow = req.body.yellowCount;
+    res.json(addScore(red, yellow));
+  } catch (error) {
+    console.log(error);
   }
 });
 
