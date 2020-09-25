@@ -93,13 +93,20 @@ function togglePlayerIndicator(full) {
 function winBanner(rWin, colWin) {
   if (rWin !== null || colWin !== null) {
     if (rWin === 'red' || colWin === 'red') {
+      let red = 0;
+      red += 1;
       $('#banner').text('RED WINS').css('background-color', 'red');
+      $('#redCount').text(red);
     }
     if (rWin === 'yellow' || colWin === 'yellow') {
+      let yellow = 0;
+      yellow += 1;
       $('#banner').text('YELLOW WINS').css('background-color', 'yellow');
+      $('#yellowCount').text(yellow);
     }
   }
 }
+
 function resetGame() {
   gridSelection();
   currentPlayer = 'yellow';
