@@ -1,77 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600681136730" clover="3.2.0">
-  <project timestamp="1600681136731" name="All files">
-    <metrics statements="65" coveredstatements="61" conditionals="30" coveredconditionals="28" methods="8" coveredmethods="7" elements="103" coveredelements="96" complexity="0" loc="65" ncloc="65" packages="1" files="2" classes="2"/>
+<coverage generated="1600959351658" clover="3.2.0">
+  <project timestamp="1600959351658" name="All files">
+    <metrics statements="80" coveredstatements="69" conditionals="42" coveredconditionals="35" methods="9" coveredmethods="8" elements="131" coveredelements="112" complexity="0" loc="80" ncloc="80" packages="1" files="2" classes="2"/>
     <file name="logic.js" path="/Users/arman/Academy/Connect4/source/server/logic.js">
-      <metrics statements="42" coveredstatements="42" conditionals="28" coveredconditionals="27" methods="5" coveredmethods="5"/>
+      <metrics statements="56" coveredstatements="50" conditionals="40" coveredconditionals="34" methods="6" coveredmethods="6"/>
       <line num="1" count="2" type="stmt"/>
-      <line num="5" count="24" type="stmt"/>
-      <line num="6" count="3" type="stmt"/>
-      <line num="10" count="3" type="stmt"/>
-      <line num="11" count="8" type="cond" truecount="2" falsecount="0"/>
-      <line num="12" count="2" type="stmt"/>
+      <line num="6" count="24" type="stmt"/>
+      <line num="7" count="3" type="stmt"/>
+      <line num="11" count="3" type="stmt"/>
+      <line num="12" count="8" type="cond" truecount="2" falsecount="0"/>
       <line num="13" count="2" type="stmt"/>
       <line num="14" count="2" type="stmt"/>
       <line num="15" count="2" type="stmt"/>
-      <line num="16" count="2" type="stmt"/>
-      <line num="21" count="2" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-      <line num="28" count="5" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="22" count="2" type="stmt"/>
+      <line num="25" count="1" type="stmt"/>
       <line num="29" count="5" type="stmt"/>
       <line num="30" count="5" type="stmt"/>
-      <line num="31" count="26" type="cond" truecount="4" falsecount="0"/>
-      <line num="32" count="5" type="stmt"/>
-      <line num="34" count="21" type="stmt"/>
-      <line num="36" count="26" type="cond" truecount="4" falsecount="0"/>
-      <line num="37" count="3" type="stmt"/>
-      <line num="39" count="23" type="stmt"/>
-      <line num="41" count="26" type="cond" truecount="2" falsecount="0"/>
-      <line num="42" count="1" type="stmt"/>
-      <line num="44" count="25" type="cond" truecount="2" falsecount="0"/>
-      <line num="45" count="1" type="stmt"/>
-      <line num="48" count="3" type="stmt"/>
-      <line num="52" count="5" type="stmt"/>
-      <line num="53" count="5" type="stmt"/>
-      <line num="54" count="5" type="stmt"/>
-      <line num="55" count="24" type="cond" truecount="4" falsecount="0"/>
+      <line num="31" count="5" type="stmt"/>
+      <line num="32" count="26" type="cond" truecount="4" falsecount="0"/>
+      <line num="33" count="5" type="stmt"/>
+      <line num="35" count="21" type="stmt"/>
+      <line num="37" count="26" type="cond" truecount="4" falsecount="0"/>
+      <line num="38" count="3" type="stmt"/>
+      <line num="40" count="23" type="stmt"/>
+      <line num="42" count="26" type="cond" truecount="2" falsecount="0"/>
+      <line num="43" count="1" type="stmt"/>
+      <line num="45" count="25" type="cond" truecount="2" falsecount="0"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="49" count="3" type="stmt"/>
+      <line num="53" count="1" type="stmt"/>
+      <line num="54" count="1" type="stmt"/>
+      <line num="55" count="1" type="stmt"/>
       <line num="56" count="5" type="stmt"/>
-      <line num="58" count="19" type="stmt"/>
-      <line num="60" count="24" type="cond" truecount="4" falsecount="0"/>
-      <line num="61" count="3" type="stmt"/>
-      <line num="63" count="21" type="stmt"/>
-      <line num="65" count="24" type="cond" truecount="2" falsecount="0"/>
-      <line num="66" count="1" type="stmt"/>
-      <line num="68" count="23" type="cond" truecount="2" falsecount="0"/>
-      <line num="69" count="1" type="stmt"/>
-      <line num="72" count="3" type="stmt"/>
-      <line num="75" count="2" type="cond" truecount="1" falsecount="1"/>
-      <line num="76" count="2" type="stmt"/>
+      <line num="57" count="21" type="cond" truecount="4" falsecount="0"/>
+      <line num="58" count="2" type="stmt"/>
+      <line num="60" count="19" type="stmt"/>
+      <line num="62" count="21" type="cond" truecount="3" falsecount="1"/>
+      <line num="63" count="0" type="stmt"/>
+      <line num="65" count="21" type="stmt"/>
+      <line num="69" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="70" count="0" type="stmt"/>
+      <line num="72" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="73" count="0" type="stmt"/>
+      <line num="75" count="0" type="stmt"/>
+      <line num="79" count="5" type="stmt"/>
+      <line num="80" count="5" type="stmt"/>
+      <line num="81" count="5" type="stmt"/>
+      <line num="82" count="24" type="cond" truecount="4" falsecount="0"/>
+      <line num="83" count="5" type="stmt"/>
+      <line num="85" count="19" type="stmt"/>
+      <line num="87" count="24" type="cond" truecount="4" falsecount="0"/>
+      <line num="88" count="3" type="stmt"/>
+      <line num="90" count="21" type="stmt"/>
+      <line num="92" count="24" type="cond" truecount="2" falsecount="0"/>
+      <line num="93" count="1" type="stmt"/>
+      <line num="95" count="23" type="cond" truecount="2" falsecount="0"/>
+      <line num="96" count="1" type="stmt"/>
+      <line num="99" count="3" type="stmt"/>
+      <line num="102" count="2" type="cond" truecount="1" falsecount="1"/>
+      <line num="103" count="2" type="stmt"/>
     </file>
     <file name="server.js" path="/Users/arman/Academy/Connect4/source/server/server.js">
-      <metrics statements="23" coveredstatements="19" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+      <metrics statements="24" coveredstatements="19" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
       <line num="6" count="1" type="stmt"/>
-      <line num="9" count="1" type="stmt"/>
-      <line num="12" count="1" type="stmt"/>
-      <line num="14" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
       <line num="15" count="1" type="stmt"/>
       <line num="16" count="1" type="stmt"/>
       <line num="17" count="1" type="stmt"/>
       <line num="18" count="1" type="stmt"/>
-      <line num="20" count="0" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
+      <line num="19" count="1" type="stmt"/>
+      <line num="21" count="0" type="stmt"/>
       <line num="25" count="1" type="stmt"/>
       <line num="26" count="1" type="stmt"/>
       <line num="27" count="1" type="stmt"/>
       <line num="28" count="1" type="stmt"/>
-      <line num="31" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
       <line num="32" count="1" type="stmt"/>
-      <line num="34" count="0" type="stmt"/>
-      <line num="38" count="1" type="cond" truecount="1" falsecount="1"/>
-      <line num="39" count="0" type="stmt"/>
-      <line num="40" count="0" type="stmt"/>
-      <line num="44" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="35" count="0" type="stmt"/>
+      <line num="36" count="0" type="stmt"/>
+      <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+      <line num="41" count="0" type="stmt"/>
+      <line num="42" count="0" type="stmt"/>
+      <line num="46" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

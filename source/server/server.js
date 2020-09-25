@@ -2,9 +2,9 @@ const express = require('express');
 const {
   createBoard,
   takeTurn,
-  writeGameState,
   state,
 } = require('./logic.js');
+
 const app = express();
 
 // static will load the index.html when no path is specified
@@ -23,16 +23,17 @@ app.post('/game', (req, res) => {
   }
 });
 
-app.post('/game/takeTurn', async (req, res) => {
+app.post('/game/takeTurn', (req, res) => {
   try {
     const col = req.body.column;
     const colour = req.body.turnColour;
     const turnResult = {
-      result: await takeTurn(col, colour),
+      result: takeTurn(col, colour),
     };
     res.json(turnResult);
     res.status(200);
   } catch (error) {
+    console.error(error);
     res.send(error);
   }
 });

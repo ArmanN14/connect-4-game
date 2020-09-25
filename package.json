@@ -15,7 +15,7 @@
     "eslint-plugin-import": "^2.22.0"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --verbose --coverage"
   },
   "repository": {
     "type": "git",

@@ -1,35 +1,18 @@
-const fs = require('fs').promises;
-
-let state = {
+const state = {
   board: [],
 };
 
 function createBoard(rows, columns) {
-  state.board = [...Array(columns).keys()].map(i => Array(rows).fill(null));
+  state.board = [...Array(columns).keys()].map((i) => Array(rows).fill(null));
   return state.board;
 }
-// does it empty the state after the first run therefore the board is empty again
-async function writeGameState() {
-  try {
-    const boardState = state.board;
-    const lPS = state.lastPlayerServer;
-    const body = {
-      boardState,
-      lPS,
-    };
-    await fs.writeFile('./source/server/gameData.json', JSON.stringify(body), 'utf-8');
-  } catch (error) {
-    console.log(error);
-  }
-}
 
-async function takeTurn(column, currentPlayer) {
+function takeTurn(column, currentPlayer) {
   for (let row = state.board[column].length - 1; row >= 0; row--) {
     if (state.board[column][row] === null) {
       state.board[column][row] = currentPlayer;
       const rowWin = checkWinnerRow(row);
       const columnWin = checkWinnerColumn(column);
-      await writeGameState();
       const result = {
         currentRow: row,
         roWin: rowWin,
@@ -65,6 +48,32 @@ function checkWinnerColumn(currentColumn) {
   return null;
 }
 
+// function diagonalWin(col, row) {
+//   let redWin = 0;
+//   let yellowWin = 0;
+//   for (let i = 0; i < state.board[col].length; i++) {
+//     for (let j = state.board[i].length; j > 0; j--) {
+//       if (state.board[i][j] === 'red' && state.board[i + 1][j - 1] === 'red') {
+//         redWin += 1;
+//       } else {
+//         redWin = 0;
+//       }
+//       if (state.board[i][j] === 'yellow' && state.board[i + 1][j - 1] === 'yellow') {
+//         yellowWin += 1;
+//       } else {
+//         yellowWin = 0;
+//       }
+//     }
+//   }
+//   if (redWin === 3) {
+//     return 'red';
+//   }
+//   if (yellowWin === 3) {
+//     return 'yellow';
+//   }
+//   return null;
+// }
+
 function checkWinnerRow(currentRow) {
   let redWin = 0;
   let yellowWin = 0;
@@ -96,6 +105,5 @@ if (typeof module !== 'undefined') {
     checkWinnerColumn,
     checkWinnerRow,
     state,
-    writeGameState,
   };
 }
