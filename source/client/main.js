@@ -2,6 +2,8 @@ $('#btn_grid').click(gridSelection);
 $('#btn_new_game').click(resetGame);
 const grid = $('#grid');
 let currentPlayer = 'red';
+let yellow = 0;
+let red = 0;
 
 function gridSelection() {
   grid.html('');
@@ -93,20 +95,17 @@ function togglePlayerIndicator(full) {
 function winBanner(rWin, colWin) {
   if (rWin !== null || colWin !== null) {
     if (rWin === 'red' || colWin === 'red') {
-      let red = 0;
       red += 1;
       $('#banner').text('RED WINS').css('background-color', 'red');
       $('#redCount').text(red);
     }
     if (rWin === 'yellow' || colWin === 'yellow') {
-      let yellow = 0;
       yellow += 1;
       $('#banner').text('YELLOW WINS').css('background-color', 'yellow');
       $('#yellowCount').text(yellow);
     }
   }
 }
-
 function resetGame() {
   gridSelection();
   currentPlayer = 'yellow';
